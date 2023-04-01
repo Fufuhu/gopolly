@@ -6,6 +6,7 @@ package cmd
 import (
 	"github.com/Fufuhu/gopolly/util/logging"
 	"github.com/spf13/cobra"
+	"go.uber.org/zap"
 )
 
 // synthesizeCmd represents the synthesize command
@@ -42,5 +43,7 @@ func init() {
 
 func synthesize(cmd *cobra.Command, args []string) {
 	logger := logging.GetLogger()
-	defer logger.Sync()
+	defer func(logger *zap.Logger) {
+		_ = logger.Sync()
+	}(logger)
 }
