@@ -4,13 +4,7 @@ import "go.uber.org/zap"
 
 var logger *zap.Logger
 
-type LoggerConfig struct{}
-
-func GetDefaultLoggerConfig() *LoggerConfig {
-	return &LoggerConfig{}
-}
-
-func GetLogger(config *LoggerConfig) *zap.Logger {
+func GetLogger() *zap.Logger {
 	if logger != nil {
 		return logger
 	}

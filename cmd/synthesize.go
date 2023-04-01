@@ -4,7 +4,7 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
-	"fmt"
+	"github.com/Fufuhu/gopolly/util/logging"
 	"github.com/spf13/cobra"
 )
 
@@ -33,7 +33,7 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// synthesizeCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	synthesizeCmd.Flags().String("file", "f", "Transcript file to synthesize voice audio")
+	synthesizeCmd.Flags().String("file", "", "Transcript file to synthesize voice audio")
 	err := synthesizeCmd.MarkFlagRequired("file")
 	if err != nil {
 		return
@@ -41,5 +41,6 @@ func init() {
 }
 
 func synthesize(cmd *cobra.Command, args []string) {
-	fmt.Println("synthesize")
+	logger := logging.GetLogger()
+	defer logger.Sync()
 }
